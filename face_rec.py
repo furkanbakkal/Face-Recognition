@@ -19,8 +19,10 @@ GPIO.setup(11, GPIO.OUT) #11. sıradaki GPIO17 çıkış pini olarak ayarladık
 
 #Anlık ismi tanınmayan yüz olma ihtimaline karşı bilinmeyen olarak tanımladık
 currentname = "Bilinmeyen"
+
 #Model eğittiğimiz çıktı paketimizin ismi
 encodingsP = "encodings.pickle"
+
 #Yüz tespit için xml dosyası
 cascade = "haarcascade_frontalface_default.xml"
 
