@@ -45,7 +45,7 @@ while True:
 	frame = vs.read()
 	frame = imutils.resize(frame, width=500)
 	# Kamera pencerimizi 500x500 olarak ayarladık.
-	#Biraz küçük ama tam erkan yaparsak FPS çok düşük olur.
+	#Biraz küçük ama tam ekran yaparsak FPS çok düşük olur.
 	
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY) #yüz tespiti için gri filtre 
 	rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB) #yüz tanıma için renkli filtre
@@ -83,6 +83,7 @@ while True:
 
 			#Eşlesen kısımlar üzerinde döngüye yaptıracağız.
 			#En yüksek orana sahip yüzü bulacağız.
+			
 			for i in matchedIdxs:
 				name = data["names"][i]
 				counts[name] = counts.get(name, 0) + 1
@@ -99,10 +100,10 @@ while True:
 		
 	#Tanınan veya bilinmeyen yüzün etrafına çerçeve çizdik ismini yazdık.
 	for ((top, right, bottom, left), name) in zip(boxes, names):
+		
 		#Renkler Mavi-Yeşil-Kırmızı kodlamasındadır (ör. 128,128,0)
 		
-		cv2.rectangle(frame, (left, top), (right, bottom),
-			(128, 128, 0), 2)
+		cv2.rectangle(frame, (left, top), (right, bottom),(128, 128, 0), 2)
 		y = top - 15 if top - 15 > 15 else top + 15
 		cv2.putText(frame, name, (left, y), cv2.FONT_HERSHEY_SIMPLEX,
 			.8, (128,128, 0), 2)
@@ -114,8 +115,8 @@ while True:
 	cv2.imshow("Yüz Tanıma Sistemi", frame)
 	key = cv2.waitKey(1) & 0xFF
 
-	#w tuşu ile pencereyi kapatabilirsiniz.
-	if key == ord("w"):
+	#q tuşu ile pencereyi kapatabilirsiniz.
+	if key == ord("q"):
 		break
 
 	#FPS değerimizi güncelledik.
