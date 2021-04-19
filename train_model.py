@@ -1,7 +1,7 @@
 #! /usr/bin/python
 # - *- coding: utf- 8 - *-
 
-from imutils import paths #Gerekli modülleri ekledik.
+from imutils import paths #Gerekli modülleri ekledik. 
 import face_recognition
 import pickle
 import cv2
@@ -18,8 +18,7 @@ knownNames = []
 
 for (i, imagePath) in enumerate(imagePaths):
 	#Resim ve isim dosyaları çekilip değerlendirme yapılıyor.
-	print("[-] İşlenen resim {}/{}".format(i + 1,
-		len(imagePaths)))
+	print("[-] İşlenen resim {}/{}".format(i + 1,len(imagePaths)))
 	name = imagePath.split(os.path.sep)[-2]
 
 	#Resim okuma, renk düzeni ayarları yapılandırması
@@ -27,8 +26,7 @@ for (i, imagePath) in enumerate(imagePaths):
 	rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
 	#Resimlerdeki yüzler bulunuyor
-	boxes = face_recognition.face_locations(rgb,
-		model="hog")
+	boxes = face_recognition.face_locations(rgb,model="hog")
 
 	#Yüzler taranıyor
 	encodings = face_recognition.face_encodings(rgb, boxes)
